@@ -27,7 +27,8 @@ app.get("/luck", (req, res) => {
   res.render( 'luck', {number:num, luck:luck} );
 });
 
-app.get("/janken", (req, res) => {
+//判定を加えて，GitHubに加えて，そのURLを提出
+app.get("/janken", (req, res) => {                         
   let hand = req.query.hand;
   let win = Number( req.query.win );
   let total = Number( req.query.total );
@@ -38,9 +39,26 @@ app.get("/janken", (req, res) => {
   else if( num==2 ) cpu = 'チョキ';
   else cpu = 'パー';
   // ここに勝敗の判定を入れる
-  // 今はダミーで人間の勝ちにしておく
-  let judgement = '勝ち';
+
+  let judgement = '';
+  if( hand == 'グー' && cpu == 'チョキ'){
+  judgement = '勝ち';
   win += 1;
+  }
+  else if( hand == 'パー' && cpu == 'グー' ){
+  judgement = '勝ち';
+  win += 1;
+  }
+  else if( hand == 'チョキ' && cpu == 'パー' ){
+  judgement = '勝ち';
+  win += 1;
+  }
+  else if( hand == cpu ){
+    judgement = '引き分け';
+  }
+  else {
+    judgement = '負け';
+  }
   total += 1;
   const display = {
     your: hand,
