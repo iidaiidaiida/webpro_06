@@ -19,9 +19,10 @@ views/janken.ejs|ジャンケンのテンプレートファイル
 ## フローチャート
 
 ```mermaid
-flowchartTD;
+flowchart TD;
 開始 --> 終了;
 ```
+
 
 ```mermaid
 flowchart TD;
