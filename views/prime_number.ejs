@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>素数の判定</title>
+</head>
+<body>
+    <p><%= your %>は<%= cpu %></p>
+    <hr>
+    <form action="/prime_number">
+        <input type="text" name="hand" id="hand" required>
+        <label for="hand">判定したい数字をいれて
+        </label>
+        <input type="submit" value="判定">
+    </form>   
+</body>
+</html>

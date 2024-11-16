@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>足し算</title>
+</head>
+<body>
+    <p><%= your %>＋<%= your1 %>は<%= cpu %>です</p>
+    <hr>
+    <form action="/plus">
+        <input type="text" name="hand" id="hand" required>
+        <input type="text" name="hand1" id="hand1" required>
+        <label for="hand" for="hand1">足したい数字をいれて
+        </label>
+        <input type="submit" value="足し算">
+    </form>   
+</body>
+</html>

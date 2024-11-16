@@ -28,6 +28,7 @@ app.get("/luck", (req, res) => {
 });
 
 //判定を加えて，GitHubに加えて，そのURLを提出
+
 app.get("/janken", (req, res) => {                         
   let hand = req.query.hand;
   let win = Number( req.query.win );
@@ -35,6 +36,9 @@ app.get("/janken", (req, res) => {
   console.log( {hand, win, total});
   const num = Math.floor( Math.random() * 3 + 1 );
   let cpu = '';
+  win = 0;
+  total = 0;
+
   if( num==1 ) cpu = 'グー';
   else if( num==2 ) cpu = 'チョキ';
   else cpu = 'パー';
@@ -68,6 +72,53 @@ app.get("/janken", (req, res) => {
     total: total
   }
   res.render( 'janken', display );
+});
+
+app.get("/prime_number", (req, res) => {                         
+  let hand = req.query.hand;
+  console.log( {hand});
+  let cpu = '';
+  
+  if (hand <= 1){
+    cpu = '素数ではありません';
+  }
+  if (hand % 2 === 0 && hand !=2){
+    cpu = '素数ではありません';
+  } else{
+    cpu = '素数です';
+    let i = 3;
+    while (i <= Math.sqrt(hand)) {
+      if (hand % i === 0){
+        cpu = '素数ではありません';
+        break;
+      }
+      i += 2;
+    }
+  }
+  if (hand === 2) {
+    cpu = '素数です';
+  }
+  const display = {
+    your: hand,
+    cpu: cpu,
+  }
+  res.render( 'prime_number', display );
+});
+
+app.get("/plus", (req, res) => {                         
+  let hand = Number(req.query.hand);
+  let hand1 = Number(req.query.hand1);
+  console.log( {hand});
+  let cpu = '';
+
+  cpu = hand + hand1;
+  
+  const display = {
+    your1:hand1,
+    your: hand,
+    cpu: cpu,
+  }
+  res.render( 'plus', display );
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
