@@ -23,11 +23,13 @@ app.get("/luck", (req, res) => {
   let luck = '';
   if( num==1 ) luck = '大吉';
   else if( num==2 ) luck = '中吉';
+  else if( num==3 ) luck = '小吉';
+  else if( num==4 ) luck = '吉';
+  else if( num==5 ) luck = '末吉';
+  else if( num==6 ) luck = '凶';
   console.log( 'あなたの運勢は' + luck + 'です' );
   res.render( 'luck', {number:num, luck:luck} );
 });
-
-//判定を加えて，GitHubに加えて，そのURLを提出
 
 app.get("/janken", (req, res) => {                         
   let hand = req.query.hand;
